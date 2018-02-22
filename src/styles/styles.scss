@@ -1,0 +1,166 @@
+/**
+ * Created by Wojtek on 2018-02-22.
+ */
+@import "starWarsLoader";
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,500');
+
+$material-blue: #00bcd4;
+$spacer-top: 56px;
+
+* {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.active {
+  color: orange !important;
+  border-bottom: 1px solid orange !important;
+}
+
+body {
+  background-image: url("/src/img/Founders_wallpaper.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  .container {
+    max-width: 868px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.navi {
+  z-index: 200;
+  background: black;
+  width: 100%;
+  position: fixed;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo {
+    width: 10%;
+    max-width: 100px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__list {
+    width: 80%;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    li {
+      display: inline-block;
+      margin: 0 20px;
+      a {
+        color: white;
+        font-weight: 200;
+        font-size: 1.3em;
+        letter-spacing: 2px;
+        text-decoration: none;
+        transition: color .3s ease-out;
+        &:hover {
+          color: orange;
+        }
+      }
+    }
+  }
+}
+.modal {
+  display: block;
+  background-color: black;
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  &__box {
+    background-color: red;
+    width: 300px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.movies-list {
+  padding-top: $spacer-top;
+  z-index: 100;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0) !important;
+
+  .items-wrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .item {
+      width: 30%;
+      border-radius: 5px;
+      flex-basis: auto;
+      margin: 5% 0;
+      overflow: hidden;
+      transition: .2s linear;
+      background: white;
+      &__header {
+        h2 {
+          font-size: 1.2em;
+          font-weight: 400;
+          text-align: center;
+          margin: 0;
+          color: orange;
+        }
+        &--idBadge {
+          background: orange;
+          border-radius: 0 0 50% 0;
+          padding: 0 5px 5px 2px;
+        }
+
+      }
+      &__body {
+        img {
+          width: 100%;
+        }
+      }
+      &__body--poster {
+        padding: 20px;
+      }
+      &__body--avarage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .avarage--field {
+        }
+      }
+
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1024px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .movies-list {
+    width: 100%;
+    flex-basis: auto;
+    margin: 0px auto;
+    .items-wrapper {
+      .item {
+        width: 90%;
+        margin: 2rem auto;
+      }
+    }
+  }
+}
