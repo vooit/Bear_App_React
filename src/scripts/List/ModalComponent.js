@@ -7,7 +7,10 @@ const Modal = (props) => {
     return (
         <div className="modal">
             <div className="modal__box">
-                poooo {props.bearTitle}
+                poooo
+                <br/>
+                <br/>
+                <br/>
                 <span onClick={props.handleModal}>X</span>
             </div>
         </div>

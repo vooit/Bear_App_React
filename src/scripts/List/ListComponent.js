@@ -43,11 +43,35 @@ export default class MoviesList extends React.Component {
 
     handleModal(id) {
         console.log('poooo');
-        console.log(this.bearId);
+        console.log(id);
         this.setState({
             showModal: !this.state.showModal
         })
     }
+
+
+    // getBearUrl(id) {
+    //     return `https://api.punkapi.com/v2/beers/${id}`;
+    // }
+    //
+    // getBearData(id, rating) {
+    //     fetch(this.getBearUrl(id), {
+    //         method: 'get',
+    //         dataType: 'json',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Cache-Control': 'no-cache'
+    //         }
+    //     }).then(response => response.json())
+    //         .then(ratings => {
+    //             this.setState({
+    //                 ratings
+    //             })
+    //         })
+    //         .catch(function (err) {
+    //             console.log(err, 'rating not defined');
+    //         })
+    // }
 
 
     //------------------------------------------------------
@@ -62,16 +86,16 @@ export default class MoviesList extends React.Component {
         return (
             <div>
                 {this.state.showModal ?
-                    <Modal handleModal={this.handleModal.bind(this)}/> : null
+                    <Modal  handleModal={this.handleModal.bind(this)}/> : null
 
                 }
                 <div className="items-wrapper container">
                     { this.state.movies.map((bearEl, index) =>
                         <BearItem {...bearEl} key={index}
+                                  bearId={bearEl.id}
                                   handleModal={this.handleModal.bind(this)}
                         />
                     )}
-                    {/*{ this.renderBearsList() }*/}
                 </div>
             </div>
         )

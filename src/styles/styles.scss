@@ -75,10 +75,10 @@ body {
 .modal {
   display: block;
   background-color: black;
-  position: absolute;
   z-index: 100;
   width: 100vw;
   height: 100vh;
+  position: fixed;
   &__box {
     background-color: red;
     width: 300px;
