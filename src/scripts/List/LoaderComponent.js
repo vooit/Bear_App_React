@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-const LoaderWars = () => {
+const Loader = () => {
     return (
         <div>
             <div className="starwars-loader">
@@ -14,4 +14,4 @@ const LoaderWars = () => {
     )
 };
 
-export default LoaderWars;
+export default Loader;

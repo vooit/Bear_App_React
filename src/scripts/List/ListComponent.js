@@ -2,20 +2,21 @@
  *  Created by Wojtek on 2018-02-22.
  */
 import React from 'react';
-import LoaderWars from './LoaderComponent';
+import Loader from './LoaderComponent';
 import BearItem from './BearItemComponent';
 import Modal from  './ModalComponent';
 
 
-export default class MoviesList extends React.Component {
+export default class BearsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: [],
+            bears: [],
             showModal: false
         };
+        // this.onPaginatedSearch = this.onPaginatedSearch.bind(this)
     }
-
+    //get url
     getBears() {
         return fetch('https://api.punkapi.com/v2/beers', {
             method: 'get',
@@ -26,27 +27,49 @@ export default class MoviesList extends React.Component {
             }
         })
     }
-
+    //fetch data
     componentDidMount() {
+        window.addEventListener('scroll', this.onScroll);
+
+
         this.getBears()
             .then((Response) => Response.json())
-            .then((movies) => {
-                console.log(movies);
+            .then((bears) => {
+                console.log(bears);
                 this.setState({
-                    movies
+                    bears
                 });
             })
             .catch(function (err) {
                 console.log(err);
             })
     }
+    //event on scroll
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+    //on scroll function passed to lifecycle
+    onScroll(){
+        if (
+            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) // if reches the BOTTOM
 
-    handleModal(id) {
-        console.log('poooo');
-        console.log(id);
+        ) {
+            this.onPaginatedSearch();
+        }
+    }
+    //if scrolled FETCH FUCKING DATA
+    onPaginatedSearch() {
+        console.log('scrolled');
+    }
+
+    // toggle modal
+    handleModal(id, name) {
+        console.log(id, name);
+
         this.setState({
             showModal: !this.state.showModal
         })
+        return <div>{id}</div>
     }
 
 
@@ -54,7 +77,7 @@ export default class MoviesList extends React.Component {
     //     return `https://api.punkapi.com/v2/beers/${id}`;
     // }
     //
-    // getBearData(id, rating) {
+    // getBearData(id) {
     //     fetch(this.getBearUrl(id), {
     //         method: 'get',
     //         dataType: 'json',
@@ -75,26 +98,29 @@ export default class MoviesList extends React.Component {
 
 
     //------------------------------------------------------
-
+    //render bears list
     render() {
-        const {movies} = this.state;
+
+        const modalText = "passed text from parent";
+
+
+        const {bears} = this.state;
         //LOADER//
-        if (!movies.length) {
-            return <LoaderWars />
+        if (!bears.length) {
+            return <Loader />
         }
 
         return (
             <div>
                 {this.state.showModal ?
-                    <Modal  handleModal={this.handleModal.bind(this)}/> : null
-
+                    <Modal modalText = {modalText} handleModal={this.handleModal.bind(this)}/> : null
                 }
                 <div className="items-wrapper container">
-                    { this.state.movies.map((bearEl, index) =>
+                    { this.state.bears.map((bearEl, index) =>
                         <BearItem {...bearEl} key={index}
                                   bearId={bearEl.id}
-                                  handleModal={this.handleModal.bind(this)}
-                        />
+                                  bearName = {bearEl.name}
+                                  handleModal={this.handleModal.bind(this)}/>
                     )}
                 </div>
             </div>
