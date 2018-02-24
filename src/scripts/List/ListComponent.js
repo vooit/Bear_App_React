@@ -12,6 +12,7 @@ export default class BearsList extends React.Component {
         super(props);
         this.state = {
             bears: [],
+            beer: undefined,
             showModal: false
         };
         // this.onPaginatedSearch = this.onPaginatedSearch.bind(this)
@@ -63,42 +64,14 @@ export default class BearsList extends React.Component {
     }
 
     // toggle modal
-    handleModal(id, name) {
-        console.log(id, name);
-
+    handleModal(beer) {
+        console.log(beer.id, beer.name);
         this.setState({
-            showModal: !this.state.showModal
+            showModal: !this.state.showModal,
+            beer
         })
-        return <div>{id}</div>
     }
 
-
-    // getBearUrl(id) {
-    //     return `https://api.punkapi.com/v2/beers/${id}`;
-    // }
-    //
-    // getBearData(id) {
-    //     fetch(this.getBearUrl(id), {
-    //         method: 'get',
-    //         dataType: 'json',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Cache-Control': 'no-cache'
-    //         }
-    //     }).then(response => response.json())
-    //         .then(ratings => {
-    //             this.setState({
-    //                 ratings
-    //             })
-    //         })
-    //         .catch(function (err) {
-    //             console.log(err, 'rating not defined');
-    //         })
-    // }
-
-
-    //------------------------------------------------------
-    //render bears list
     render() {
 
         const modalText = "passed text from parent";
@@ -112,18 +85,19 @@ export default class BearsList extends React.Component {
 
         return (
             <div>
-                {this.state.showModal ?
-                    <Modal modalText = {modalText} handleModal={this.handleModal.bind(this)}/> : null
-                }
                 <div className="items-wrapper container">
                     { this.state.bears.map((bearEl, index) =>
-                        <BearItem {...bearEl} key={index}
-                                  bearId={bearEl.id}
-                                  bearName = {bearEl.name}
-                                  handleModal={this.handleModal.bind(this)}/>
+                        <BearItem {...bearEl}
+                                  key={index}
+                                  onItemClick={this.handleModal.bind(this, bearEl)}/>
                     )}
                 </div>
+                <Modal modalText={modalText}
+                       showModal={this.state.showModal}
+                       onCloseClick={this.handleModal.bind(this)}
+                       beer={this.state.beer}/>
             </div>
+
         )
     }
 }

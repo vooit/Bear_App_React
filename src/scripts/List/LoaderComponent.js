@@ -7,7 +7,7 @@ import React from 'react';
 const Loader = () => {
     return (
         <div>
-            <div className="starwars-loader">
+            <div className="loader">
                 <img src="src/img/founders-logo.png"/>
             </div>
         </div>

@@ -16,7 +16,7 @@ const BearItem = (props) => {
                 </div>
             </div>
             <div className="item__footer">
-                <span  onClick={props.handleModal.bind(this, props.bearId, props.bearName)}>details</span>
+                <span  onClick={props.onItemClick}>details</span>
             </div>
         </div>
     )
