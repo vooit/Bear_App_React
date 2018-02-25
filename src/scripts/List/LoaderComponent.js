@@ -6,8 +6,8 @@ import React from 'react';
 
 const Loader = () => {
     return (
-        <div>
-            <div className="loader">
+        <div className="loader">
+            <div className="loader__image">
                 <img src="src/img/founders-logo.png"/>
             </div>
         </div>

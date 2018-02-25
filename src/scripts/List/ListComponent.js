@@ -18,20 +18,19 @@ export default class BearsList extends React.Component {
         // this.onPaginatedSearch = this.onPaginatedSearch.bind(this)
     }
     //get url
-    getBears() {
-        return fetch('https://api.punkapi.com/v2/beers', {
-            method: 'get',
-            dataType: 'json',
-            headers: {
-                'Content-Type': 'application/json',
-                'Cache-Control': 'no-cache'
-            }
-        })
-    }
+    // getBears() {
+    //     return fetch('https://api.punkapi.com/v2/beers', {
+    //         method: 'get',
+    //         dataType: 'json',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Cache-Control': 'no-cache'
+    //         }
+    //     })
+    // }
     //fetch data
     componentDidMount() {
         window.addEventListener('scroll', this.onScroll);
-
 
         this.getBears()
             .then((Response) => Response.json())
@@ -53,7 +52,6 @@ export default class BearsList extends React.Component {
     onScroll(){
         if (
             (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) // if reches the BOTTOM
-
         ) {
             this.onPaginatedSearch();
         }
@@ -73,16 +71,12 @@ export default class BearsList extends React.Component {
     }
 
     render() {
-
         const modalText = "passed text from parent";
-
-
         const {bears} = this.state;
         //LOADER//
         if (!bears.length) {
             return <Loader />
         }
-
         return (
             <div>
                 <div className="items-wrapper container">
@@ -97,7 +91,6 @@ export default class BearsList extends React.Component {
                        onCloseClick={this.handleModal.bind(this)}
                        beer={this.state.beer}/>
             </div>
-
         )
     }
 }

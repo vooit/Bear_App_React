@@ -154,15 +154,24 @@ body {
 }
 
 .loader {
-
-  animation-name: pulse;
-  animation-duration: 5000ms;
-  transform-origin: 70% 70%;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  width: 100vw;
+  height: 100vw;
+  &__image {
+    max-width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 25%;
+    img {
+      width: 100%;
+      transform: translate(-50%);
+      animation: pulse 5000ms infinite ease-in-out;
+    }
+  }
 }
-
+//MODAL STYLES & ANIMATION
 .modal-container {
   position: fixed;
   display: table;
@@ -256,15 +265,8 @@ body {
 }
 
 // loader animation
-
 @keyframes pulse {
-  0% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
 }
