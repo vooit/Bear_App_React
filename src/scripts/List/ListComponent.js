@@ -11,33 +11,31 @@ export default class BearsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bears: [],
+            beers: [],
             beer: undefined,
             showModal: false
         };
-        // this.onPaginatedSearch = this.onPaginatedSearch.bind(this)
     }
     //get url
-    // getBears() {
-    //     return fetch('https://api.punkapi.com/v2/beers', {
-    //         method: 'get',
-    //         dataType: 'json',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Cache-Control': 'no-cache'
-    //         }
-    //     })
-    // }
+    getBears() {
+        return fetch('https://api.punkapi.com/v2/beers', {
+            method: 'get',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache'
+            }
+        })
+    }
     //fetch data
     componentDidMount() {
         window.addEventListener('scroll', this.onScroll);
-
         this.getBears()
             .then((Response) => Response.json())
-            .then((bears) => {
-                console.log(bears);
+            .then((beers) => {
+                console.log(beers);
                 this.setState({
-                    bears
+                    beers
                 });
             })
             .catch(function (err) {
@@ -70,26 +68,29 @@ export default class BearsList extends React.Component {
         })
     }
 
+    
+
+
     render() {
-        const modalText = "passed text from parent";
-        const {bears} = this.state;
+        const {beers} = this.state;
         //LOADER//
-        if (!bears.length) {
+        if (!beers.length) {
             return <Loader />
         }
         return (
             <div>
                 <div className="items-wrapper container">
-                    { this.state.bears.map((bearEl, index) =>
+                    { this.state.beers.map((bearEl, index) =>
                         <BearItem {...bearEl}
                                   key={index}
                                   onItemClick={this.handleModal.bind(this, bearEl)}/>
                     )}
                 </div>
-                <Modal modalText={modalText}
-                       showModal={this.state.showModal}
+                <Modal showModal={this.state.showModal}
                        onCloseClick={this.handleModal.bind(this)}
-                       beer={this.state.beer}/>
+                       beer={this.state.beer}
+                      // beers={this.state.beers}
+                />
             </div>
         )
     }

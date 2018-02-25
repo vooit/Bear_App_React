@@ -19,7 +19,7 @@ const NavHeader = () => {
                 <div className="navi">
                     <div className="container">
                         <div className="navi__logo">
-                            <img src="src/img/founders-logo.png"/>
+                            <img src="src/img/BrewDogLogotypeMarque.png"/>
                         </div>
                         <ul className="navi__list">
                             <li>

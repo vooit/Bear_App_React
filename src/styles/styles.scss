@@ -4,7 +4,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,500');
 
 $material-blue: #00bcd4;
-$spacer-top: 56px;
+
+$spacer-top: 67px;
 
 * {
   font-family: 'Lato', sans-serif !important;
@@ -16,13 +17,14 @@ $spacer-top: 56px;
 }
 
 body {
-  background-image: url("/src/img/Founders_wallpaper.jpg");
-  background-size: cover;
-  min-height: 100vh;
-  background-repeat: no-repeat;
+  background-image: url("/src/img/brew_dog_wp1.jpg");
+  background-size: contain;
   background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   .container {
     max-width: 868px;
     margin: 0 auto;
@@ -32,24 +34,26 @@ body {
 
 .navi {
   z-index: 200;
-  background: black;
+  background: #00bcd4;
   width: 100%;
   position: fixed;
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: $spacer-top;
+    max-height: $spacer-top;
   }
   &__logo {
-    width: 10%;
-    max-width: 100px;
+    width: 30%;
+    max-width: 200px;
     img {
       width: 100%;
       height: auto;
     }
   }
   &__list {
-    width: 80%;
+    width: 70%;
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -77,18 +81,17 @@ body {
   z-index: 100;
   position: relative;
   background-color: rgba(0, 0, 0, 0) !important;
-
   .items-wrapper {
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     .item {
+      position: relative;
       width: 30%;
       border-radius: 5px;
       flex-basis: auto;
       margin: 5% 0;
-      overflow: hidden;
       transition: .2s linear;
       background: white;
       &__header {
@@ -116,17 +119,21 @@ body {
           }
         }
       }
-      &__body--poster {
-        padding: 20px;
-      }
-      &__body--avarage {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .avarage--field {
+      &__footer {
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        text-align: center;
+        > span {
+          cursor: pointer;
+          transition: .3s;
+          &:hover {
+            color: grey;
+
+          }
         }
       }
-
     }
   }
 }
@@ -171,6 +178,43 @@ body {
     }
   }
 }
+
+.single-bear {
+  .info-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  &__image {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    img {
+      width: 100%;
+      max-width: 90px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+
+    }
+  }
+  &__copy {
+    width: 70%;
+    &--numeric {
+      display: flex;
+    }
+  }
+  &__exit {
+    position: absolute;
+    top: 10px;
+    left: auto;
+    right: 15px;
+  }
+  &__food {
+    list-style-type: none;
+  }
+}
+
 //MODAL STYLES & ANIMATION
 .modal-container {
   position: fixed;
@@ -185,7 +229,21 @@ body {
     transform: scaleY(.01) scaleX(0);
     animation: unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
     .modal-background {
+      background: rgba(0, 0, 0, .8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       .modal {
+        background: white;
+        padding: 50px;
+        margin-top: $spacer-top;
+        display: inline-block;
+        border-radius: 3px;
+        font-weight: 300;
+        position: relative;
+        width: 50%;
+        height: auto;
         transform: scale(0);
         animation: zoomIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
       }
@@ -198,26 +256,6 @@ body {
           animation: zoomOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
         }
       }
-    }
-  }
-
-  .modal-background {
-    display: flex;
-    background: rgba(0, 0, 0, .8);
-    text-align: center;
-    vertical-align: middle;
-    justify-content: center;
-    height: 100vh;
-    .modal {
-      background: white;
-      padding: 50px;
-      display: inline-block;
-      border-radius: 3px;
-      font-weight: 300;
-      position: relative;
-      width: 50%;
-      height: 400px;
-
     }
   }
 }
@@ -266,7 +304,16 @@ body {
 
 // loader animation
 @keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
 }
