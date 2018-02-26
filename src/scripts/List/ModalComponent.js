@@ -4,21 +4,18 @@
 import React from "react";
 
 const Modal = (props) => {
-    let modalClassName = "modal-container " + (props.showModal ? "showIn" : "showIn showout");
+    let modalClassName = "modal-container " + (props.showModal ? "showIn" : "showIn showOut");
+    // console.log(props.beers);
 
     let foodData = [props.beer && props.beer.food_pairing];
 
-    // let newArr = [];
-    // for (let i = 0; i < foodData.length; i++) {
-    //     console.log(foodData[i])
-    //     newArr.push(foodData[i])
-    // }
-    // console.log('length of old array is ' + foodData.length);
-    // console.log('length of new made arr is ' + newArr.length)
-    // console.log(foodData[0]);
+    let data = props.beer && props.beer.food_pairing;
+//    let listItems = props.beer && props.beer.food_pairing.map((element) =>
     const listItems = foodData.map((element) =>
         <li>{element}</li>
     );
+
+    //-----------------------
 
     return (
         <div className={modalClassName}>
@@ -32,17 +29,30 @@ const Modal = (props) => {
                             <h3>{props.modalText}</h3>
                             <h3>{props.beer && props.beer.name}</h3>
                             <h3>{props.beer && props.beer.tagline}</h3>
-                            <h3>{props.beer && props.beer.description}</h3>
+                            <p>{props.beer && props.beer.description}</p>
 
                             <div className="single-bear__copy--numeric">
-                                <p><strong>IBU</strong> <span>{props.beer && props.beer.ibu}</span></p>
-                                <p><strong>ABV</strong> <span>{props.beer && props.beer.abv}</span></p>
-                                <p><strong>EBC</strong> <span>{props.beer && props.beer.ebc}</span></p>
+                                <p><strong>IBU</strong> <span>{props.beer && props.beer.ibu}</span>
+                                </p>
+                                <p><strong>ABV</strong> <span>{props.beer && props.beer.abv}</span>
+                                </p>
+                                <p><strong>EBC</strong> <span>{props.beer && props.beer.ebc}</span>
+                                </p>
                             </div>
                             <ul className="single-bear__food">{listItems}</ul>
                         </div>
                     </div>
-
+                    <hr/>
+                    <div>
+                        <h3>
+                            You may also like:
+                        </h3>
+                        <ul className="beers-hint">
+                            { props.beers.map((bearEl) =>
+                                <li>{bearEl.name}</li>
+                            )}
+                        </ul>
+                    </div>
 
                     <span className="single-bear__exit" onClick={props.onCloseClick}>X</span>
                 </div>

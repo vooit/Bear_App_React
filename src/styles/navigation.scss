@@ -1,0 +1,49 @@
+/**
+ * Created by Wojtek on 2018-02-24.
+ */
+
+
+
+.navi {
+  z-index: 200;
+  background: #00bcd4;
+  width: 100%;
+  position: fixed;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $spacer-top;
+    max-height: $spacer-top;
+  }
+  &__logo {
+    width: 30%;
+    max-width: 200px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__list {
+    width: 70%;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    li {
+      display: inline-block;
+      margin: 0 20px;
+      a {
+        color: white;
+        font-weight: 200;
+        font-size: 1.3em;
+        letter-spacing: 2px;
+        text-decoration: none;
+        transition: color .3s ease-out;
+        &:hover {
+          color: orange;
+        }
+      }
+    }
+  }
+}

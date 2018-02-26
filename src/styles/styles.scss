@@ -1,12 +1,14 @@
 /**
  * Created by Wojtek on 2018-02-22.
  */
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,500');
-
 $material-blue: #00bcd4;
-
 $spacer-top: 67px;
 
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,500');
+@import "navigation";
+@import "loader";
+@import "beers-list";
+@import "modal";
 * {
   font-family: 'Lato', sans-serif !important;
 }
@@ -18,7 +20,7 @@ $spacer-top: 67px;
 
 body {
   background-image: url("/src/img/brew_dog_wp1.jpg");
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -32,111 +34,6 @@ body {
   }
 }
 
-.navi {
-  z-index: 200;
-  background: #00bcd4;
-  width: 100%;
-  position: fixed;
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: $spacer-top;
-    max-height: $spacer-top;
-  }
-  &__logo {
-    width: 30%;
-    max-width: 200px;
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
-  &__list {
-    width: 70%;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    li {
-      display: inline-block;
-      margin: 0 20px;
-      a {
-        color: white;
-        font-weight: 200;
-        font-size: 1.3em;
-        letter-spacing: 2px;
-        text-decoration: none;
-        transition: color .3s ease-out;
-        &:hover {
-          color: orange;
-        }
-      }
-    }
-  }
-}
-
-.bears-list {
-  padding-top: $spacer-top;
-  z-index: 100;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0) !important;
-  .items-wrapper {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    .item {
-      position: relative;
-      width: 30%;
-      border-radius: 5px;
-      flex-basis: auto;
-      margin: 5% 0;
-      transition: .2s linear;
-      background: white;
-      &__header {
-        h2 {
-          font-size: 1.2em;
-          font-weight: 400;
-          text-align: center;
-          margin: 0;
-          color: orange;
-        }
-        &--idBadge {
-          background: black;
-          padding: 0 5px 5px 2px;
-          color: white;
-        }
-
-      }
-      &__body {
-        &--poster {
-          padding: 20px;
-          width: 25%;
-          margin: 0 auto;
-          img {
-            width: 100%;
-          }
-        }
-      }
-      &__footer {
-        position: absolute;
-        bottom: 0;
-        top: auto;
-        width: 100%;
-        text-align: center;
-        > span {
-          cursor: pointer;
-          transition: .3s;
-          &:hover {
-            color: grey;
-
-          }
-        }
-      }
-    }
-  }
-}
 
 @media (min-width: 1200px) {
   .container {
@@ -147,173 +44,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  .movies-list {
-    width: 100%;
-    flex-basis: auto;
-    margin: 0px auto;
-    .items-wrapper {
-      .item {
-        width: 90%;
-        margin: 2rem auto;
-      }
-    }
-  }
+
 }
 
-.loader {
-  background: rgba(0, 0, 0, 0.75);
-  position: fixed;
-  width: 100vw;
-  height: 100vw;
-  &__image {
-    max-width: 200px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 25%;
-    img {
-      width: 100%;
-      transform: translate(-50%);
-      animation: pulse 5000ms infinite ease-in-out;
-    }
-  }
-}
-
-.single-bear {
-  .info-wrapper {
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-  &__image {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    img {
-      width: 100%;
-      max-width: 90px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-
-    }
-  }
-  &__copy {
-    width: 70%;
-    &--numeric {
-      display: flex;
-    }
-  }
-  &__exit {
-    position: absolute;
-    top: 10px;
-    left: auto;
-    right: 15px;
-  }
-  &__food {
-    list-style-type: none;
-  }
-}
-
-//MODAL STYLES & ANIMATION
-.modal-container {
-  position: fixed;
-  display: table;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  transform: scale(0);
-  z-index: 100;
-  &.showIn {
-    transform: scaleY(.01) scaleX(0);
-    animation: unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-    .modal-background {
-      background: rgba(0, 0, 0, .8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      .modal {
-        background: white;
-        padding: 50px;
-        margin-top: $spacer-top;
-        display: inline-block;
-        border-radius: 3px;
-        font-weight: 300;
-        position: relative;
-        width: 50%;
-        height: auto;
-        transform: scale(0);
-        animation: zoomIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-      }
-    }
-    &.showout {
-      transform: scale(1);
-      animation: unfoldOut 1s .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-      .modal-background {
-        .modal {
-          animation: zoomOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-        }
-      }
-    }
-  }
-}
-
-@keyframes unfoldIn {
-  0% {
-    transform: scaleY(.005) scaleX(0);
-  }
-  50% {
-    transform: scaleY(.005) scaleX(1);
-  }
-  100% {
-    transform: scaleY(1) scaleX(1);
-  }
-}
-
-@keyframes unfoldOut {
-  0% {
-    transform: scaleY(1) scaleX(1);
-  }
-  50% {
-    transform: scaleY(.005) scaleX(1);
-  }
-  100% {
-    transform: scaleY(.005) scaleX(0);
-  }
-}
-
-@keyframes zoomIn {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes zoomOut {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
-// loader animation
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.9);
-    opacity: 0.7;
-  }
-}

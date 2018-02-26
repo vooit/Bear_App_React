@@ -16,6 +16,7 @@ export default class BearsList extends React.Component {
             showModal: false
         };
     }
+
     //get url
     getBears() {
         return fetch('https://api.punkapi.com/v2/beers', {
@@ -27,6 +28,7 @@ export default class BearsList extends React.Component {
             }
         })
     }
+
     //fetch data
     componentDidMount() {
         window.addEventListener('scroll', this.onScroll);
@@ -42,34 +44,30 @@ export default class BearsList extends React.Component {
                 console.log(err);
             })
     }
+
     //event on scroll
     componentWillUnmount() {
         window.removeEventListener('scroll', this.onScroll, false);
     }
+
     //on scroll function passed to lifecycle
-    onScroll(){
+    onScroll() {
         if (
             (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) // if reches the BOTTOM
         ) {
-            this.onPaginatedSearch();
+            // console.log('scrolled')
         }
     }
-    //if scrolled FETCH FUCKING DATA
-    onPaginatedSearch() {
-        console.log('scrolled');
-    }
+
 
     // toggle modal
     handleModal(beer) {
-        console.log(beer.id, beer.name);
+        // console.log(beer.id, beer.name);
         this.setState({
             showModal: !this.state.showModal,
             beer
         })
     }
-
-    
-
 
     render() {
         const {beers} = this.state;
@@ -80,16 +78,19 @@ export default class BearsList extends React.Component {
         return (
             <div>
                 <div className="items-wrapper container">
-                    { this.state.beers.map((bearEl, index) =>
+                    { beers.map((bearEl, index) =>
                         <BearItem {...bearEl}
                                   key={index}
-                                  onItemClick={this.handleModal.bind(this, bearEl)}/>
+                                  onItemClick={this.handleModal.bind(this, bearEl)}
+
+                        />
                     )}
                 </div>
                 <Modal showModal={this.state.showModal}
                        onCloseClick={this.handleModal.bind(this)}
                        beer={this.state.beer}
-                      // beers={this.state.beers}
+                       beers={this.state.beers}
+
                 />
             </div>
         )
