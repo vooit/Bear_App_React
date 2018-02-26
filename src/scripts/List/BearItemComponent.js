@@ -16,8 +16,6 @@ const BearItem = (props) => {
                 <h2>{props.name}</h2>
                 <h4>{props.tagline}</h4>
             </div>
-
-
         </div>
     )
 };

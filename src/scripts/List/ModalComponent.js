@@ -5,15 +5,21 @@ import React from "react";
 
 const Modal = (props) => {
     let modalClassName = "modal-container " + (props.showModal ? "showIn" : "showIn showOut");
-    // console.log(props.beers);
 
+
+    // console.log(props.beers);
     let foodData = [props.beer && props.beer.food_pairing];
 
     let data = props.beer && props.beer.food_pairing;
-//    let listItems = props.beer && props.beer.food_pairing.map((element) =>
-    const listItems = foodData.map((element) =>
-        <li>{element}</li>
+    //    let listItems = props.beer && props.beer.food_pairing.map((element) =>
+    const listItems = foodData.map((element, index) =>
+        <li key={index}>{element}</li>
     );
+
+
+    // console.log(props.beer && props.beer.ibu)
+    const getIbu = props.beer && props.beer.ibu;
+    console.log(getIbu)
 
     //-----------------------
 
@@ -26,12 +32,11 @@ const Modal = (props) => {
                             <img src={props.beer && props.beer.image_url}/>
                         </div>
                         <div className="single-bear__copy">
-                            <h3>{props.modalText}</h3>
                             <h3>{props.beer && props.beer.name}</h3>
                             <h3>{props.beer && props.beer.tagline}</h3>
                             <p>{props.beer && props.beer.description}</p>
 
-                            <div className="single-bear__copy--numeric">
+                            <div className="single-bear__copy--numeric no-gutters">
                                 <p><strong>IBU</strong> <span>{props.beer && props.beer.ibu}</span>
                                 </p>
                                 <p><strong>ABV</strong> <span>{props.beer && props.beer.abv}</span>
@@ -43,15 +48,26 @@ const Modal = (props) => {
                         </div>
                     </div>
                     <hr/>
+
                     <div>
-                        <h3>
+                        <h3 className="no-gutters">
                             You may also like:
                         </h3>
-                        <ul className="beers-hint">
-                            { props.beers.map((bearEl) =>
-                                <li>{bearEl.name}</li>
+                        <div className="beers-hint no-gutters">
+                            {props.beers.map(bearEl => {
+                                    if (bearEl.ibu > getIbu) {
+                                        return (
+                                            <div className="beer-hint__item">
+                                                {/*<img src={bearEl.image_url} className="beer-hint__item--img"/>*/}
+                                                <h3 className="beer-hint__item--name">{bearEl.name}</h3>
+                                                {/*<p>{bearEl.ibu}</p>*/}
+                                            </div>
+
+                                        )
+                                    }
+                                }
                             )}
-                        </ul>
+                        </div>
                     </div>
 
                     <span className="single-bear__exit" onClick={props.onCloseClick}>X</span>
@@ -59,6 +75,10 @@ const Modal = (props) => {
             </div>
         </div>
     )
-}
+};
 
 export default Modal;
+//   { props.beers.map((bearEl) =>
+//    <li>{bearEl.name}</li>
+//    )}
+

@@ -23,6 +23,7 @@ const About = () => {
     return (
         <MuiThemeProvider>
             <div className="container">
+
                 <Paper zDepth={4} className="About" style={styles.about}>
                     <h1 style={styles.caption}>BREWDOG BREWERY APP API</h1>
                     <h2>It's a simple app build on React and React-Router 4,with using:</h2>

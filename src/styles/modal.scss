@@ -2,8 +2,6 @@
  * Created by Wojtek on 2018-02-22.
  */
 
-
-
 .single-bear {
   .info-wrapper {
     display: flex;
@@ -54,8 +52,15 @@
     list-style-type: none;
   }
   .beers-hint {
-    li {
-      display: inline-block;
+      display: flex;
+    .beer-hint__item {
+      width: 10%;
+      &--img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        height: auto;
+      }
     }
   }
 
@@ -83,9 +88,9 @@
       height: 100vh;
       .modal {
         background: white;
-        padding: 50px;
+        padding: 20px 50px;
         display: inline-block;
-        border-radius: 3px;
+        border-radius: 10px;
         font-weight: 300;
         position: relative;
         width: 50%;
@@ -105,8 +110,6 @@
     }
   }
 }
-
-
 
 @keyframes unfoldIn {
   0% {

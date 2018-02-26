@@ -13,7 +13,8 @@ export default class BearsList extends React.Component {
         this.state = {
             beers: [],
             beer: undefined,
-            showModal: false
+            showModal: false,
+            beerHint: undefined
         };
     }
 
@@ -69,8 +70,19 @@ export default class BearsList extends React.Component {
         })
     }
 
+    displayHint() {
+        const {beerHint} = this.state;
+        console.log(beerHint);
+        this.setState({
+            beerHint: beers
+        })
+    }
+
+
+
+
     render() {
-        const {beers} = this.state;
+        const {beers, beer} = this.state;
         //LOADER//
         if (!beers.length) {
             return <Loader />
@@ -88,9 +100,8 @@ export default class BearsList extends React.Component {
                 </div>
                 <Modal showModal={this.state.showModal}
                        onCloseClick={this.handleModal.bind(this)}
-                       beer={this.state.beer}
-                       beers={this.state.beers}
-
+                       beer={beer}
+                       beers={beers}
                 />
             </div>
         )

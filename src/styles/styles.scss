@@ -1,22 +1,30 @@
 /**
  * Created by Wojtek on 2018-02-22.
  */
+
+* {
+  font-family: 'Lato', sans-serif !important;
+}
+
 $material-blue: #00bcd4;
 $spacer-top: 67px;
+
+.no-gutters {
+  padding: 0;
+  margin: 0;
+}
+.active {
+  color: orange !important;
+  border-bottom: 1px solid orange !important;
+}
+
+
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,500');
 @import "navigation";
 @import "loader";
 @import "beers-list";
 @import "modal";
-* {
-  font-family: 'Lato', sans-serif !important;
-}
-
-.active {
-  color: orange !important;
-  border-bottom: 1px solid orange !important;
-}
 
 body {
   background-image: url("/src/img/brew_dog_wp1.jpg");
@@ -31,7 +39,7 @@ body {
     max-width: 868px;
     margin: 0 auto;
     width: 100%;
-  }
+    }
 }
 
 
