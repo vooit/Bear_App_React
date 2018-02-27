@@ -70,13 +70,13 @@ export default class BearsList extends React.Component {
         })
     }
 
-    displayHint() {
-        const {beerHint} = this.state;
-        console.log(beerHint);
-        this.setState({
-            beerHint: beers
-        })
-    }
+    // displayHint() {
+    //     const {beerHint} = this.state;
+    //     console.log(beerHint);
+    //     this.setState({
+    //         beerHint: beers
+    //     })
+    // }
 
 
 
