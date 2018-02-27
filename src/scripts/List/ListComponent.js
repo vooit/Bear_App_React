@@ -7,7 +7,6 @@ import BearItem from './BearItemComponent';
 import Modal from  './ModalComponent';
 import BeerFilter from  './BeerFilter';
 
-
 export default class BearsList extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +22,7 @@ export default class BearsList extends React.Component {
     //get url
     getBears() {
         // return fetch('https://api.punkapi.com/v2/beers', {
-        return fetch('https://api.punkapi.com/v2/beers?page=1&per_page=20', {
+        return fetch('https://api.punkapi.com/v2/beers?page=1&per_page=80', {
             method: 'get',
             dataType: 'json',
             headers: {
@@ -76,7 +75,6 @@ export default class BearsList extends React.Component {
             <div>
                 <BeerFilter filter={this.state.filter} onFilterChange={this.onFilterChange.bind(this)}/>
                 <div className="items-wrapper container">
-
                     {
                         beers.map((bearEl, index) => {
                                 if (bearEl.name.indexOf(this.state.filter) > -1) {
