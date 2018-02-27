@@ -2,17 +2,8 @@
  * Created by Wojtek on 2018-02-22.
  */
 
-
-h2.gradient-text {
-  background: -webkit-linear-gradient(white, #00bcd4);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  font-weight: 900;
-  font-size: 3.6em;
-}
-
-
 .single-bear {
+
   .info-wrapper {
     display: flex;
     justify-content: center;
@@ -32,11 +23,20 @@ h2.gradient-text {
   }
   &__copy {
     width: 70%;
+    h2.gradient-text {
+      background: -webkit-linear-gradient(white, #00bcd4);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      font-weight: 900;
+      font-size: 3.6em;
+      margin: 0;
+    }
     &--numeric {
       display: flex;
       justify-content: space-evenly;
       > div {
         width: 30%;
+        margin-bottom: 10px;
         > strong {
           margin-right: 10px;
         }

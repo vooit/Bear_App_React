@@ -1,12 +1,15 @@
 
-react app , fetch GET/POST, material design, react-router v4, glith css effect, uniqueId generete
+react app , fetch GET/POST,  react-router v4
 
 
 npm install --> npm start
 
+||
+
+yarn install --> yarn start
+
 dev: webpack -d
-<br>  
-prod: webpack -p (production doesn't work for this moment :/ sorry , fix it soon)
+
 
 
 serve@ : http://localhost:8080/

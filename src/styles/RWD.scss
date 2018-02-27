@@ -3,5 +3,50 @@
 }
 
 @media (max-width: 767px) {
+  .bears-list {
+    .items-wrapper {
+      .item {
+        width: 90%;
+      }
+    }
+  }
 
+  .single-bear {
+    .info-wrapper {
+      justify-content: space-evenly;
+    }
+    &__image {
+      width:30%;
+    }
+    &__copy {
+      width: 50%;
+      h2.gradient-text {
+        font-size: 1.6em;
+        margin:0;
+      }
+      h3 {
+        font-size: 1em;
+      }
+      p {
+        font-size: .8em;
+      }
+      &--numeric {
+        font-size: .9em;
+      }
+    }
+    &__food {
+      font-size: .8em;
+    }
+  }
+  .modal-container {
+    &.showIn {
+      .modal-background {
+        .modal {
+          padding: 5px;
+          width: 90%;
+          height: 100vh;
+        }
+      }
+    }
+  }
 }

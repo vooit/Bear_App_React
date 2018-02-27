@@ -43,15 +43,5 @@ body {
 }
 
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1024px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 767px) {
-
-}
-
+//MEDIA QUERIES
+@import "RWD"

@@ -22,7 +22,8 @@ export default class BearsList extends React.Component {
 
     //get url
     getBears() {
-        return fetch('https://api.punkapi.com/v2/beers', {
+        // return fetch('https://api.punkapi.com/v2/beers', {
+        return fetch('https://api.punkapi.com/v2/beers?page=1&per_page=20', {
             method: 'get',
             dataType: 'json',
             headers: {
@@ -47,21 +48,6 @@ export default class BearsList extends React.Component {
                 console.log(err);
             })
     }
-
-    //event on scroll
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.onScroll, false);
-    }
-
-    //on scroll function passed to lifecycle
-    onScroll() {
-        if (
-            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) // if reches the BOTTOM
-        ) {
-            // console.log('scrolled')
-        }
-    }
-
 
     // toggle modal
     handleModal(beer) {

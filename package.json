@@ -37,7 +37,8 @@
   "dependencies": {
     "material-ui": "^0.19.4",
     "prop-types": "^15.5.10",
-    "react-router": "^4.2.0"
+    "react-router": "^4.2.0",
+    "react-simple-infinite-scroll": "^0.0.1"
   },
   "peerDependencies": {
     "react": "^15.5.4"
