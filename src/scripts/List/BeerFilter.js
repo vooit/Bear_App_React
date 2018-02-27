@@ -1,23 +1,15 @@
 /**
  * Created by Wojtek on 2018-02-27.
  */
-/**
- * Created by Wojtek on 2018-02-16.
- */
-import React from 'react';
-import PropTypes from 'prop-types';
 
-const BeerFilters = (props) => {
+import React from 'react';
+
+const BeerFilter = (props) => {
     return (
-        <form>
-            <input type="text" value={props.filter} onChange={props.onFilterChange} placeholder="Find your beer dude..." />
+        <form className="search-form">
+            <input type="text"  value={props.filter} onChange={props.onFilterChange} placeholder="Find your dog dude..." />
         </form>
     );
 };
 
-BeerFilters.propTypes = {
-    filter: PropTypes.string.isRequired,
-    onFilterChange: PropTypes.func.isRequired
-};
-
-export default BeerFilters;
+export default BeerFilter;

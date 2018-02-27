@@ -5,6 +5,7 @@ import React from 'react';
 import Loader from './LoaderComponent';
 import BearItem from './BearItemComponent';
 import Modal from  './ModalComponent';
+import BeerFilter from  './BeerFilter';
 
 
 export default class BearsList extends React.Component {
@@ -12,6 +13,7 @@ export default class BearsList extends React.Component {
         super(props);
         this.state = {
             beers: [],
+            filter: '',
             beer: undefined,
             showModal: false,
             beerHint: undefined
@@ -70,16 +72,13 @@ export default class BearsList extends React.Component {
         })
     }
 
-    // displayHint() {
-    //     const {beerHint} = this.state;
-    //     console.log(beerHint);
-    //     this.setState({
-    //         beerHint: beers
-    //     })
-    // }
 
-
-
+    onFilterChange(event) {
+        const value = event.currentTarget.value;
+        this.setState({
+            filter: value
+        });
+    };
 
     render() {
         const {beers, beer} = this.state;
@@ -89,14 +88,19 @@ export default class BearsList extends React.Component {
         }
         return (
             <div>
+                <BeerFilter filter={this.state.filter} onFilterChange={this.onFilterChange.bind(this)}/>
                 <div className="items-wrapper container">
-                    { beers.map((bearEl, index) =>
-                        <BearItem {...bearEl}
-                                  key={index}
-                                  onItemClick={this.handleModal.bind(this, bearEl)}
 
-                        />
-                    )}
+                    {
+                        beers.map((bearEl, index) => {
+                                if (bearEl.name.indexOf(this.state.filter) > -1) {
+                                    return (
+                                        <BearItem {...bearEl} key={index}
+                                                  onItemClick={this.handleModal.bind(this, bearEl)}/>)
+                                }
+                            }
+                        )
+                    }
                 </div>
                 <Modal showModal={this.state.showModal}
                        onCloseClick={this.handleModal.bind(this)}
